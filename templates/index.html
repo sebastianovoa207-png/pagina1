@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block contenido %}
+
+<img src="{{ url_for('static', filename='images/inicio1.jpeg') }}" 
+    alt="imagen1,0" 
+     width="1100" height="430">
+ 
+      <h3>dragon</h3>
+      <h3>da</h3>
+
+
+<main>
+        <div class="contenedor">
+            <div class="columna">
+                <img src="{{ url_for('static', filename='images/imagen 2.jpg') }}" 
+                  alt="imagen 2" 
+                  width="270" height="270">
+                  <h3>da</h3>
+                <h4>Nuestra Motivación</h4>
+                <h3>da</h3>
+                <p class="justificado">Queremos que vivas la magia de Santa María. Cada rincón esconde una historia, una aventura y una razón para volver. Nos motiva compartir con cada uno de ustedes la belleza natural, la calidez de su gente y las experiencias únicas que aquí los esperan.</p>
+                
+            </div>
+            <div class="columna">
+                <img src="{{ url_for('static', filename='images/imagen 3.jpg') }}" 
+                  alt="imagen 3" 
+                  width="270" height="270">
+                  <h3>da</h3>
+                <h4>Nuestra Historia</h4>
+                <h3>da</h3>
+                <p class="justificado">Ubicado en el Valle de Tenza, provincia de Neira, Santa María ha crecido como un destino turístico gracias al compromiso de su comunidad. De pueblo tranquilo a paraíso turístico, hoy abre sus puertas a quienes buscan naturaleza, tradición y descanso.</p>
+                
+                
+            </div>
+
+            <div class="columna">
+                <img src="{{ url_for('static', filename='images/imagen 4.jpg') }}" 
+                  alt="imagen 4" 
+                  width="270" height="270"> 
+                  <h3>da</h3>
+                  <h4>Nuestros Valores</h4>
+                  <h3>da</h3>
+                <p class="justificado">Creemos en un turismo responsable y auténtico, donde el respeto por la naturaleza y la cultura local es lo más importante. Cada visita es una oportunidad para conectarse con la riqueza hídrica y biodiversa de nuestro municipio.</p>
+                
+                
+            </div>
+        </div>
+    </main>
+
+
+    
+
+
+
+       <div class="contenedor-horizontal">
+
+ 
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15901.941644786068!2d-73.2726552739449!3d4.8580093026592985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6ab2bb7d4e3cbb%3A0x27263ec07fe4f9b2!2zU2FudGEgTWFyw61hLCBCb3lhY8Oh!5e0!3m2!1ses!2sco!4v1762302186463!5m2!1ses!2sco"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+   
+    
+    <div class="carousel">
+      <img src="{{ url_for('static', filename='images/imagen 2.jpg') }}" class="active">
+      <img src="{{ url_for('static', filename='images/imagen 3.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen 4.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen5.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen6.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen7.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen8.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen9.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen10.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen11.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen12.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen13.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen14.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen15.jpeg') }}">
+      <img src="{{ url_for('static', filename='images/imagen16.jpeg') }}">
+      <img src="{{ url_for('static', filename='images/imagen17.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen18.jpg') }}">
+      <img src="{{ url_for('static', filename='images/imagen19.jpg') }}">
+      
+      
+      <button class="prev">◀</button>
+      <button class="next">▶</button>
+    </div>
+
+  </div>
+
+  
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <button class="nav-btn prev-modal">◀</button>
+    <img id="modal-img" src="">
+    <button class="nav-btn next-modal">▶</button>
+  </div>
+
+  
+  <script>
+    const carousel = document.querySelector('.carousel');
+    const images = carousel.querySelectorAll('img');
+    let index = 0;
+
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+
+    function showImage(i) {
+      images.forEach(img => img.classList.remove('active'));
+      images[i].classList.add('active');
+    }
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    });
+
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    }, 3000);
+
+    showImage(index);
+
+   
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeBtn = document.querySelector('.close');
+    const prevModalBtn = document.querySelector('.prev-modal');
+    const nextModalBtn = document.querySelector('.next-modal');
+
+    images.forEach((img, i) => {
+      img.addEventListener('click', () => {
+        index = i;
+        modal.style.display = 'flex';
+        modalImg.src = images[index].src;
+      });
+    });
+
+    function showModalImage(i) {
+      modalImg.src = images[i].src;
+    }
+
+    prevModalBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      index = (index - 1 + images.length) % images.length;
+      showModalImage(index);
+    });
+
+    nextModalBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      index = (index + 1) % images.length;
+      showModalImage(index);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+
+
+
+
+
+{% endblock %}

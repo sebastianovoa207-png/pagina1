@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TOURISM AR</title>
+    
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+    
+  
+    <header class="barra-superior">
+        <h3>d</h3>
+        <nav class="menu">
+            <ul>
+                <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
+                <li><a href="{{ url_for('lugares') }}">Lugares</a></li>
+                <li><a href="{{ url_for('hoteles') }}">Hoteles</a></li>
+                <li><a href="{{ url_for('restaurantes') }}">Restaurantes</a></li>
+            </ul>
+        </nav>
+        <h3>d</h3>
+        <div class="frase">Tourism AR</div>
+        <h3>dragon azul grisaseososalmon</h3>
+        <a href="https://wa.link/hvovd9" target="_blank">
+            <button class="mi-boton">Contáctanos</button>
+        </a>
+        <h3>drag</h3>
+    </header>
+  <main id="contenido-principal">
+    {% block contenido %}
+    {% endblock %}
+</main>
+   
+</body>
+</html>
